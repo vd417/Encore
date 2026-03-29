@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encore BPO — Redefining Business Process Excellence</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #07111f;
+  --navy2: #0e2038;
+  --blue: #153460;
+  --gold: #d4a843;
+  --gold2: #f0c96a;
+  --teal: #0fbfa8;
+  --white: #ffffff;
+  --offwhite: #f5f7fa;
+  --muted: #8898aa;
+  --border: #e2e8f0;
+  --card: #ffffff;
+  --red: #e05252;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--navy);overflow-x:hidden}
+
+/* ─── NAVBAR ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 60px;height:72px;
+  background:rgba(7,17,31,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  transition:all .3s;
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.55rem;font-weight:800;
+  color:var(--white);letter-spacing:-0.5px;
+  cursor:pointer;
+}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{
+  font-size:.85rem;font-weight:500;
+  color:rgba(255,255,255,.65);
+  padding:7px 16px;border-radius:8px;
+  text-decoration:none;
+  transition:all .2s;cursor:pointer;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--white);background:rgba(255,255,255,.07)}
+.nav-cta{
+  background:var(--gold);color:var(--navy);
+  font-weight:600;font-size:.85rem;
+  padding:9px 22px;border-radius:8px;
+  border:none;cursor:pointer;
+  transition:all .2s;text-decoration:none;
+}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
+
+/* ─── PAGES ─── */
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+
+/* ═══════════════════════════════════════
+   HOME PAGE
+═══════════════════════════════════════ */
+/* HERO */
+.hero{
+  min-height:100vh;
+  background:var(--navy);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+  padding:120px 60px 80px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 70% 50%, rgba(21,52,96,.7) 0%, transparent 70%),
+             radial-gradient(ellipse 40% 40% at 20% 80%, rgba(15,191,168,.08) 0%, transparent 60%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.hero-glow{
+  position:absolute;right:-100px;top:50%;transform:translateY(-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,168,67,.12) 0%,transparent 70%);
+  animation:pulse 4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:translateY(-50%) scale(1)}50%{transform:translateY(-50%) scale(1.08)}}
+
+.hero-content{position:relative;z-index:1;max-width:660px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(212,168,67,.12);border:1px solid rgba(212,168,67,.25);
+  color:var(--gold);font-size:.75rem;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:7px 16px;border-radius:30px;margin-bottom:28px;
+  animation:fadeUp .6s ease both;
+}
+.hero-badge::before{content:'●';font-size:.5rem;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.6rem,5vw,4.2rem);
+  font-weight:900;line-height:1.08;
+  color:var(--white);margin-bottom:20px;
+  animation:fadeUp .6s .12s ease both;
+}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{
+  font-size:1.05rem;color:rgba(255,255,255,.6);
+  line-height:1.7;margin-bottom:36px;max-width:520px;
+  animation:fadeUp .6s .22s ease both;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .6s .32s ease both}
+.btn-primary{
+  background:var(--gold);color:var(--navy);
+  font-weight:700;font-size:.9rem;
+  padding:14px 32px;border-radius:10px;
+  border:none;cursor:pointer;transition:all .25s;text-decoration:none;display:inline-block;
+}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,168,67,.35)}
+.btn-outline{
+  background:transparent;color:var(--white);
+  font-weight:500;font-size:.9rem;
+  padding:14px 32px;border-radius:10px;
+  border:1.5px solid rgba(255,255,255,.25);
+  cursor:pointer;transition:all .25s;text-decoration:none;display:inline-block;
+}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,.06)}
+
+.hero-stats{
+  position:absolute;right:60px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:16px;z-index:1;
+  animation:fadeLeft .7s .4s ease both;
+}
+@keyframes fadeLeft{from{opacity:0;transform:translateY(-50%) translateX(30px)}to{opacity:1;transform:translateY(-50%) translateX(0)}}
+.stat-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:20px 24px;
+  backdrop-filter:blur(8px);min-width:180px;
+  transition:all .2s;
+}
+.stat-card:hover{background:rgba(255,255,255,.09);transform:translateX(-4px)}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:800;
+  color:var(--gold);line-height:1;
+}
+.stat-lbl{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:4px;letter-spacing:.5px}
+
+/* SCROLL INDICATOR */
+.scroll-ind{
+  position:absolute;bottom:36px;left:60px;
+  display:flex;align-items:center;gap:10px;
+  color:rgba(255,255,255,.35);font-size:.75rem;
+  animation:fadeUp .6s .6s ease both;
+}
+.scroll-line{width:40px;height:1px;background:rgba(255,255,255,.2)}
+
+/* CLIENTS */
+.clients{
+  background:var(--offwhite);padding:48px 60px;
+  border-top:1px solid var(--border);
+}
+.clients-label{
+  text-align:center;font-size:.72rem;letter-spacing:3px;
+  text-transform:uppercase;color:var(--muted);margin-bottom:28px;font-weight:600;
+}
+.clients-row{
+  display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap;
+}
+.client-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;
+  color:rgba(7,17,31,.25);
+  letter-spacing:-0.5px;transition:color .2s;cursor:default;
+}
+.client-logo:hover{color:rgba(7,17,31,.55)}
+
+/* ABOUT STRIP */
+.about-strip{
+  padding:100px 60px;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.about-eyebrow{
+  font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--teal);font-weight:600;margin-bottom:16px;
+}
+.about-strip h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.9rem,3vw,2.8rem);font-weight:800;
+  line-height:1.15;margin-bottom:20px;
+}
+.about-strip h2 span{color:var(--gold)}
+.about-strip p{
+  color:#556070;line-height:1.75;font-size:.95rem;margin-bottom:16px;
+}
+.about-features{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.feat-row{display:flex;align-items:center;gap:12px;font-size:.88rem;font-weight:500;color:var(--navy)}
+.feat-row::before{content:'✓';display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(15,191,168,.12);color:var(--teal);font-size:.75rem;font-weight:700;flex-shrink:0}
+
+.about-visual{
+  background:var(--navy);border-radius:20px;
+  padding:40px;position:relative;overflow:hidden;
+  min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;
+}
+.about-visual::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 30%,rgba(212,168,67,.15),transparent 65%);
+}
+.visual-nums{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;position:relative;z-index:1;
+}
+.vnum{background:rgba(255,255,255,.06);border-radius:12px;padding:18px}
+.vnum-val{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--gold);font-weight:800}
+.vnum-lbl{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:4px}
+
+/* WHY ENCORE */
+.why{background:var(--navy);padding:100px 60px}
+.section-head{text-align:center;margin-bottom:60px}
+.section-eye{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px}
+.section-head h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.8rem);font-weight:800;color:var(--white);line-height:1.15}
+.section-head p{color:rgba(255,255,255,.5);font-size:.95rem;margin-top:12px;max-width:520px;margin-left:auto;margin-right:auto}
+
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.why-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;padding:32px;
+  transition:all .25s;
+}
+.why-card:hover{background:rgba(255,255,255,.07);transform:translateY(-4px)}
+.why-icon{
+  width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:20px;
+}
+.why-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--white);margin-bottom:10px;font-weight:700}
+.why-card p{font-size:.84rem;color:rgba(255,255,255,.45);line-height:1.7}
+
+/* TESTIMONIAL */
+.testimonial{
+  padding:100px 60px;
+  background:linear-gradient(135deg,var(--offwhite) 0%,#eef2f8 100%);
+  text-align:center;
+}
+.testi-quote{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.3rem,2.5vw,2rem);
+  font-weight:700;color:var(--navy);
+  max-width:800px;margin:0 auto 28px;
+  line-height:1.4;
+  font-style:italic;
+}
+.testi-quote::before,.testi-quote::after{content:'"';color:var(--gold)}
+.testi-author{font-size:.85rem;font-weight:600;color:var(--muted)}
+.testi-author strong{color:var(--navy)}
+
+/* CTA BANNER */
+.cta-banner{
+  background:var(--gold);padding:80px 60px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
+}
+.cta-banner h2{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:800;color:var(--navy);max-width:520px;line-height:1.2}
+.btn-dark{
+  background:var(--navy);color:var(--white);
+  font-weight:700;font-size:.95rem;
+  padding:16px 36px;border-radius:10px;
+  border:none;cursor:pointer;transition:all .25s;white-space:nowrap;text-decoration:none;display:inline-block;
+}
+.btn-dark:hover{background:#122040;transform:translateY(-2px)}
+
+/* ═══════════════════════════════════════
+   SERVICES PAGE
+═══════════════════════════════════════ */
+.page-hero{
+  padding:140px 60px 80px;
+  background:var(--navy);position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 80% at 80% 50%,rgba(21,52,96,.5),transparent);
+}
+.page-hero-content{position:relative;z-index:1}
+.ph-badge{
+  display:inline-block;
+  background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.3);
+  color:var(--gold);font-size:.72rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  padding:6px 14px;border-radius:30px;margin-bottom:20px;
+}
+.page-hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;
+  color:var(--white);line-height:1.1;margin-bottom:16px;
+}
+.page-hero p{color:rgba(255,255,255,.55);font-size:1rem;max-width:560px;line-height:1.7}
+
+.services-section{padding:80px 60px;background:var(--offwhite)}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:60px}
+.srv-card{
+  background:var(--white);border-radius:18px;
+  border:1px solid var(--border);overflow:hidden;
+  transition:all .25s;box-shadow:0 2px 16px rgba(7,17,31,.06);
+}
+.srv-card:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(7,17,31,.12)}
+.srv-top{padding:32px 28px 24px;border-bottom:1px solid var(--border)}
+.srv-icon{
+  width:56px;height:56px;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;margin-bottom:20px;
+}
+.srv-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800;margin-bottom:8px;color:var(--navy)}
+.srv-card p{font-size:.83rem;color:var(--muted);line-height:1.65}
+.srv-bottom{padding:20px 28px}
+.srv-features{list-style:none;display:flex;flex-direction:column;gap:8px}
+.srv-features li{
+  font-size:.8rem;color:#556070;
+  display:flex;align-items:center;gap:8px;
+}
+.srv-features li::before{content:'→';color:var(--teal);font-weight:700}
+
+.process-section{padding:80px 60px;background:var(--white)}
+.process-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  margin-top:48px;position:relative;
+}
+.process-steps::before{
+  content:'';position:absolute;top:36px;left:12.5%;right:12.5%;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--teal));
+  z-index:0;
+}
+.step{text-align:center;position:relative;z-index:1;padding:0 20px}
+.step-num{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--navy);color:var(--gold);
+  font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;border:3px solid var(--gold);
+}
+.step h4{font-size:.95rem;font-weight:700;margin-bottom:8px;color:var(--navy)}
+.step p{font-size:.78rem;color:var(--muted);line-height:1.6}
+
+/* ═══════════════════════════════════════
+   CONTACT PAGE
+═══════════════════════════════════════ */
+.contact-section{padding:80px 60px;background:var(--offwhite)}
+.contact-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:start}
+.contact-info h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;margin-bottom:16px}
+.contact-info p{color:var(--muted);font-size:.9rem;line-height:1.7;margin-bottom:32px}
+.contact-details{display:flex;flex-direction:column;gap:20px}
+.cd-item{display:flex;align-items:flex-start;gap:14px}
+.cd-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--navy);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.cd-label{font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);font-weight:600;margin-bottom:3px}
+.cd-val{font-size:.9rem;font-weight:500;color:var(--navy)}
+
+.contact-form{
+  background:var(--white);border-radius:20px;
+  padding:40px;border:1px solid var(--border);
+  box-shadow:0 4px 32px rgba(7,17,31,.07);
+}
+.contact-form h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.form-group label{font-size:.75rem;font-weight:600;color:var(--navy);letter-spacing:.5px}
+.form-group input,.form-group select,.form-group textarea{
+  padding:12px 16px;border-radius:10px;
+  border:1.5px solid var(--border);
+  font-family:'Outfit',sans-serif;font-size:.88rem;color:var(--navy);
+  background:var(--offwhite);transition:border .2s;outline:none;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:var(--gold);background:var(--white);
+}
+.form-group textarea{resize:vertical;min-height:110px}
+.submit-btn{
+  width:100%;background:var(--navy);color:var(--white);
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:.92rem;
+  padding:15px;border-radius:10px;border:none;cursor:pointer;
+  transition:all .25s;
+}
+.submit-btn:hover{background:var(--blue);transform:translateY(-1px)}
+
+.offices{padding:60px 60px 100px;background:var(--white)}
+.offices h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;margin-bottom:32px;text-align:center}
+.offices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.office-card{
+  border:1.5px solid var(--border);border-radius:16px;
+  padding:28px;transition:all .2s;
+}
+.office-card:hover{border-color:var(--gold);box-shadow:0 4px 24px rgba(212,168,67,.1)}
+.office-city{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:800;margin-bottom:4px}
+.office-addr{font-size:.82rem;color:var(--muted);line-height:1.6}
+
+/* ═══════════════════════════════════════
+   CAREERS PAGE
+═══════════════════════════════════════ */
+.culture-section{
+  padding:80px 60px;
+  background:var(--navy);
+}
+.culture-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.culture-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;padding:28px;text-align:center;transition:all .2s;
+}
+.culture-card:hover{background:rgba(255,255,255,.09);transform:translateY(-3px)}
+.culture-card .icon{font-size:2rem;margin-bottom:14px}
+.culture-card h4{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--white);margin-bottom:8px;font-weight:700}
+.culture-card p{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.6}
+
+.jobs-section{padding:80px 60px;background:var(--offwhite)}
+.jobs-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.filter-btn{
+  padding:8px 20px;border-radius:30px;font-size:.8rem;font-weight:600;
+  border:1.5px solid var(--border);background:var(--white);
+  color:var(--navy);cursor:pointer;transition:all .2s;
+}
+.filter-btn:hover,.filter-btn.active{
+  background:var(--navy);color:var(--white);border-color:var(--navy);
+}
+.jobs-grid{display:flex;flex-direction:column;gap:16px}
+.job-card{
+  background:var(--white);border-radius:14px;
+  padding:24px 28px;border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  transition:all .2s;box-shadow:0 2px 12px rgba(7,17,31,.05);
+}
+.job-card:hover{border-color:var(--gold);box-shadow:0 4px 24px rgba(212,168,67,.1)}
+.job-info h4{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.job-tags{display:flex;gap:8px;flex-wrap:wrap}
+.job-tag{
+  font-size:.7rem;font-weight:600;padding:3px 10px;border-radius:20px;
+}
+.tag-dept{background:rgba(15,191,168,.1);color:var(--teal)}
+.tag-type{background:rgba(212,168,67,.1);color:#b88b20}
+.tag-loc{background:rgba(7,17,31,.07);color:var(--navy)}
+.apply-btn{
+  background:var(--navy);color:var(--white);
+  font-size:.82rem;font-weight:600;
+  padding:10px 22px;border-radius:9px;border:none;
+  cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+.apply-btn:hover{background:var(--blue);transform:scale(1.03)}
+
+.benefits-section{padding:80px 60px;background:var(--white)}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.benefit-card{
+  border-radius:16px;padding:28px;
+  background:var(--offwhite);border:1px solid var(--border);transition:all .2s;
+}
+.benefit-card:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(7,17,31,.08)}
+.benefit-icon{font-size:1.8rem;margin-bottom:14px}
+.benefit-card h4{font-size:.95rem;font-weight:700;margin-bottom:8px;color:var(--navy)}
+.benefit-card p{font-size:.8rem;color:var(--muted);line-height:1.6}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--navy);color:rgba(255,255,255,.5);
+  padding:60px 60px 32px;
+}
+.footer-top{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;
+  margin-bottom:48px;
+}
+.footer-brand .nav-logo{display:block;margin-bottom:14px}
+.footer-brand p{font-size:.82rem;line-height:1.7;max-width:260px}
+.footer-col h5{
+  font-size:.72rem;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.35);font-weight:600;margin-bottom:16px;
+}
+.footer-col a{
+  display:block;font-size:.83rem;color:rgba(255,255,255,.5);
+  text-decoration:none;margin-bottom:10px;transition:color .2s;cursor:pointer;
+}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.07);
+  padding-top:24px;display:flex;justify-content:space-between;
+  font-size:.78rem;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom span{color:var(--gold)}
+
+/* ─── UTILITIES ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.animate{animation:fadeUp .55s ease both}
+
+.section-divider{height:1px;background:var(--border);margin:0 60px}
+
+/* Responsive touch */
+@media(max-width:900px){
+  nav{padding:0 24px}
+  .hero{padding:120px 24px 80px;flex-direction:column}
+  .hero-stats{position:static;transform:none;flex-direction:row;flex-wrap:wrap;margin-top:40px;animation:fadeUp .6s .4s ease both}
+  .about-strip,.contact-layout,.footer-top{grid-template-columns:1fr}
+  .srv-grid,.why-grid,.culture-grid,.benefits-grid,.offices-grid{grid-template-columns:1fr 1fr}
+  .process-steps{grid-template-columns:1fr 1fr}
+  .process-steps::before{display:none}
+  .clients,.about-strip,.services-section,.process-section,.contact-section,.offices,.culture-section,.jobs-section,.benefits-section,.why,.testimonial,.cta-banner,.page-hero,footer,.footer-top{padding-left:24px;padding-right:24px}
+  .section-divider{margin:0 24px}
+  .hero-stats{right:24px}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">En<span>core</span> BPO</div>
+  <div class="nav-links">
+    <a onclick="showPage('home')" class="active" id="nav-home">Home</a>
+    <a onclick="showPage('services')" id="nav-services">Services</a>
+    <a onclick="showPage('contact')" id="nav-contact">Contact Us</a>
+    <a onclick="showPage('careers')" id="nav-careers">Careers</a>
+  </div>
+  <a class="nav-cta" onclick="showPage('contact')">Get a Quote</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">● Trusted by 200+ Global Enterprises</div>
+      <h1>Redefining <em>Business</em><br>Process Excellence</h1>
+      <p>Encore BPO delivers world-class outsourcing solutions — from customer experience to back-office operations — powered by people, process, and technology.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" onclick="showPage('services')">Explore Services</a>
+        <a class="btn-outline" onclick="showPage('contact')">Talk to Us →</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">18+</div>
+        <div class="stat-lbl">Years of Excellence</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5,000+</div>
+        <div class="stat-lbl">Skilled Professionals</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">40+</div>
+        <div class="stat-lbl">Countries Served</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">98%</div>
+        <div class="stat-lbl">Client Retention Rate</div>
+      </div>
+    </div>
+
+    <div class="scroll-ind">
+      <div class="scroll-line"></div>
+      Scroll to explore
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <div class="clients">
+    <div class="clients-label">Trusted by industry leaders worldwide</div>
+    <div class="clients-row">
+      <div class="client-logo">TechNova</div>
+      <div class="client-logo">Apex Financial</div>
+      <div class="client-logo">GlobalHealth</div>
+      <div class="client-logo">RetailPro</div>
+      <div class="client-logo">Vantage Inc</div>
+      <div class="client-logo">NexGen Corp</div>
+    </div>
+  </div>
+
+  <!-- ABOUT STRIP -->
+  <section class="about-strip">
+    <div>
+      <div class="about-eyebrow">Who We Are</div>
+      <h2>Your Strategic <span>Outsourcing</span> Partner</h2>
+      <p>Founded in 2006, Encore BPO has grown into a global leader in business process outsourcing. We blend deep domain expertise with cutting-edge technology to deliver measurable outcomes for our clients.</p>
+      <p>From Fortune 500 corporations to fast-growing startups, we tailor solutions that scale with your ambitions.</p>
+      <div class="about-features">
+        <div class="feat-row">ISO 9001:2015 Certified Operations</div>
+        <div class="feat-row">24/7/365 Multilingual Support</div>
+        <div class="feat-row">AI-Enhanced Workflow Automation</div>
+        <div class="feat-row">GDPR & SOC 2 Compliant Infrastructure</div>
+        <div class="feat-row">Dedicated Client Success Managers</div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="visual-nums">
+        <div class="vnum"><div class="vnum-val">200+</div><div class="vnum-lbl">Global Clients</div></div>
+        <div class="vnum"><div class="vnum-val">40+</div><div class="vnum-lbl">Countries</div></div>
+        <div class="vnum"><div class="vnum-val">5K+</div><div class="vnum-lbl">Professionals</div></div>
+        <div class="vnum"><div class="vnum-val">98%</div><div class="vnum-lbl">Retention</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ENCORE -->
+  <section class="why">
+    <div class="section-head">
+      <div class="section-eye">Why Choose Us</div>
+      <h2>Built for Results.<br>Designed for Partnership.</h2>
+      <p>We don't just manage processes — we optimize them, innovate around them, and take ownership of outcomes.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon" style="background:rgba(212,168,67,.12)">🏆</div>
+        <h3>Proven Track Record</h3>
+        <p>18+ years of delivering measurable ROI across industries including BFSI, healthcare, retail, and telecom.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:rgba(15,191,168,.12)">⚡</div>
+        <h3>Technology-First Approach</h3>
+        <p>AI, RPA, and analytics baked into every engagement — not added as an afterthought.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:rgba(230,80,80,.1)">🌍</div>
+        <h3>Global Delivery Model</h3>
+        <p>Onshore, nearshore, and offshore capabilities spanning 12 delivery centers across 6 continents.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:rgba(124,106,247,.12)">🔒</div>
+        <h3>Security & Compliance</h3>
+        <p>Enterprise-grade security protocols, data governance frameworks, and full regulatory compliance.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:rgba(212,168,67,.12)">📈</div>
+        <h3>Scalable Operations</h3>
+        <p>Rapid ramp-up capabilities — scale from 10 to 1,000 agents in weeks without compromising quality.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:rgba(15,191,168,.12)">🤝</div>
+        <h3>True Partnership</h3>
+        <p>We invest in understanding your business deeply. Your success metrics are our KPIs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="testimonial">
+    <div class="section-eye" style="color:var(--teal);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:20px">Client Voice</div>
+    <div class="testi-quote">Encore BPO transformed our customer operations completely. NPS improved by 34 points in the first year, and we reduced operational costs by 42%.</div>
+    <div class="testi-author"><strong>Sarah Mitchell</strong> · Chief Operating Officer, Apex Financial Group</div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <h2>Ready to Transform Your Business Operations?</h2>
+    <a class="btn-dark" onclick="showPage('contact')">Start the Conversation →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo">En<span>core</span> BPO</div>
+        <p>Redefining what's possible in business process outsourcing. Excellence, every interaction.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a onclick="showPage('home')">About Us</a>
+        <a>Leadership</a>
+        <a>Newsroom</a>
+        <a onclick="showPage('careers')">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a onclick="showPage('services')">Customer Experience</a>
+        <a onclick="showPage('services')">Back Office</a>
+        <a onclick="showPage('services')">Finance & Accounting</a>
+        <a onclick="showPage('services')">IT Support</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a onclick="showPage('contact')">Contact Us</a>
+        <a>LinkedIn</a>
+        <a>Twitter</a>
+        <a>info@encorebpo.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 <span>Encore BPO</span>. All Rights Reserved.</div>
+      <div>Privacy Policy · Terms of Service · Cookie Policy</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SERVICES PAGE
+════════════════════════════════════════════ -->
+<div class="page" id="page-services">
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="ph-badge">What We Offer</div>
+      <h1>End-to-End BPO<br>Services That Deliver</h1>
+      <p>From customer-facing operations to complex back-office functions, Encore BPO covers every dimension of your business process needs.</p>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="srv-grid">
+      <div class="srv-card">
+        <div class="srv-top">
+          <div class="srv-icon" style="background:rgba(212,168,67,.1)">📞</div>
+          <h3>Customer Experience</h3>
+          <p>Deliver exceptional customer journeys across every channel — voice, chat, email, and social — with our highly trained agents.</p>
+        </div>
+        <div class="srv-bottom">
+          <ul class="srv-features">
+            <li>Inbound & Outbound Call Center</li>
+            <li>Live Chat & Email Support</li>
+            <li>Social Media Management</li>
+            <li>Complaint Resolution</li>
+            <li>Multilingual Support (30+ languages)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-top">
+          <div class="srv-icon" style="background:rgba(15,191,168,.1)">🏢</div>
+          <h3>Back Office Operations</h3>
+          <p>Streamline critical administrative functions with accuracy, speed, and full process transparency.</p>
+        </div>
+        <div class="srv-bottom">
+          <ul class="srv-features">
+            <li>Data Entry & Processing</li>
+            <li>Document Management</li>
+            <li>Order & Claims Processing</li>
+            <li>KYC & Onboarding</li>
+            <li>Quality Assurance</li>
+          </ul>
+        </div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-top">
+          <div class="srv-icon" style="background:rgba(124,106,247,.1)">💰</div>
+          <h3>Finance & Accounting</h3>
+          <p>Accurate, compliant, and efficient F&A operations to keep your business financially sound and audit-ready.</p>
+        </div>
+        <div class="srv-bottom">
+          <ul class="srv-features">
+            <li>Accounts Payable & Receivable</li>
+            <li>General Ledger Management</li>
+            <li>Payroll Processing</li>
+            <li>Financial Reporting</li>
+            <li>Tax Compliance Support</li>
+          </ul>
+        </div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-top">
+          <div class="srv-icon" style="background:rgba(224,82,82,.1)">💻</div>
+          <h3>IT Help Desk & Support</h3>
+          <p>Round-the-clock technical support ensuring your employees and customers get the help they need, instantly.</p>
+        </div>
+        <div class="srv-bottom">
+          <ul class="srv-features">
+            <li>L1, L2 & L3 IT Support</li>
+            <li>Remote Desktop Assistance</li>
+            <li>SLA-Driven Ticketing</li>
+            <li>Network & Security Monitoring</li>
+            <li>ITSM Integration</li>
+          </ul>
+        </div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-top">
+          <div class="srv-icon" style="background:rgba(212,168,67,.1)">🤖</div>
+          <h3>Intelligent Automation</h3>
+          <p>Harness AI, RPA, and analytics to eliminate repetitive tasks and unlock new levels of operational efficiency.</p>
+        </div>
+        <div class="srv-bottom">
+          <ul class="srv-features">
+            <li>Robotic Process Automation</li>
+            <li>AI-Powered Chatbots</li>
+            <li>Predictive Analytics</li>
+            <li>Workflow Optimization</li>
+            <li>Process Mining</li>
+          </ul>
+        </div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-top">
+          <div class="srv-icon" style="background:rgba(15,191,168,.1)">❤️</div>
+          <h3>Healthcare BPO</h3>
+          <p>HIPAA-compliant healthcare process support enabling providers and payers to focus on care delivery.</p>
+        </div>
+        <div class="srv-bottom">
+          <ul class="srv-features">
+            <li>Medical Billing & Coding</li>
+            <li>Revenue Cycle Management</li>
+            <li>Patient Support Services</li>
+            <li>Prior Authorization</li>
+            <li>Claims Adjudication</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section">
+    <div class="section-head">
+      <div class="section-eye">How We Work</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800">Our Engagement Process</h2>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto">A structured, transparent approach that ensures a smooth launch and continuous improvement.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Discovery</h4>
+        <p>Deep-dive into your current processes, pain points, and business objectives.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Solution Design</h4>
+        <p>Custom solution blueprint, SLA framework, and technology stack selection.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Transition</h4>
+        <p>Seamless knowledge transfer, team onboarding, and parallel run testing.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Continuous Improvement</h4>
+        <p>Ongoing optimization through data-driven insights and quarterly business reviews.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <h2>Need a Custom BPO Solution?</h2>
+    <a class="btn-dark" onclick="showPage('contact')">Request a Consultation →</a>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo">En<span>core</span> BPO</div>
+        <p>Excellence, every interaction.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('careers')">Careers</a>
+        <a onclick="showPage('contact')">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a>Customer Experience</a>
+        <a>Back Office</a>
+        <a>Finance & Accounting</a>
+        <a>IT Support</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a>info@encorebpo.com</a>
+        <a>+1 (800) 555-0199</a>
+        <a>LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 <span>Encore BPO</span>. All Rights Reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CONTACT PAGE
+════════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="ph-badge">Get In Touch</div>
+      <h1>Let's Build Something<br>Great Together</h1>
+      <p>Reach out to our team and discover how Encore BPO can transform your operations. We typically respond within 2 business hours.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-layout">
+      <div class="contact-info">
+        <h2>We'd Love to Hear From You</h2>
+        <p>Whether you're exploring outsourcing for the first time or looking to switch providers, our experts are ready to help you find the right solution.</p>
+        <div class="contact-details">
+          <div class="cd-item">
+            <div class="cd-icon">📍</div>
+            <div>
+              <div class="cd-label">Headquarters</div>
+              <div class="cd-val">Level 18, Encore Tower, Cyber City,<br>Gurugram, Haryana 122002, India</div>
+            </div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-icon">📞</div>
+            <div>
+              <div class="cd-label">Phone</div>
+              <div class="cd-val">+91 124 400 5000 (India)<br>+1 (800) 555-0199 (US Toll-Free)</div>
+            </div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-icon">✉️</div>
+            <div>
+              <div class="cd-label">Email</div>
+              <div class="cd-val">info@encorebpo.com<br>careers@encorebpo.com</div>
+            </div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-icon">🕐</div>
+            <div>
+              <div class="cd-label">Business Hours</div>
+              <div class="cd-val">24/7 Operations Support<br>Sales: Mon–Sat, 9 AM – 7 PM IST</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Send Us a Message</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Rahul">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Sharma">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Work Email</label>
+          <input type="email" placeholder="rahul@company.com">
+        </div>
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" placeholder="Your Company Ltd.">
+        </div>
+        <div class="form-group">
+          <label>Service Interest</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Customer Experience</option>
+            <option>Back Office Operations</option>
+            <option>Finance & Accounting</option>
+            <option>IT Help Desk</option>
+            <option>Intelligent Automation</option>
+            <option>Healthcare BPO</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your requirements, team size, or any questions..."></textarea>
+        </div>
+        <button class="submit-btn" onclick="alert('Thank you! We\'ll be in touch within 2 business hours.')">Send Message →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFICES -->
+  <section class="offices">
+    <h2>Our Global Offices</h2>
+    <div class="offices-grid">
+      <div class="office-card">
+        <div class="office-city">🇮🇳 Gurugram, India</div>
+        <div class="office-addr">Level 18, Encore Tower, Cyber City, Gurugram 122002<br><strong>Global HQ</strong></div>
+      </div>
+      <div class="office-card">
+        <div class="office-city">🇺🇸 Dallas, USA</div>
+        <div class="office-addr">2500 Commerce Street, Suite 800,<br>Dallas, TX 75201</div>
+      </div>
+      <div class="office-card">
+        <div class="office-city">🇬🇧 London, UK</div>
+        <div class="office-addr">40 Bank Street, Canary Wharf,<br>London E14 5NR</div>
+      </div>
+      <div class="office-card">
+        <div class="office-city">🇦🇺 Sydney, Australia</div>
+        <div class="office-addr">Level 12, 60 Martin Place,<br>Sydney NSW 2000</div>
+      </div>
+      <div class="office-card">
+        <div class="office-city">🇵🇭 Manila, Philippines</div>
+        <div class="office-addr">32nd Floor, Zuellig Building,<br>Makati City 1225</div>
+      </div>
+      <div class="office-card">
+        <div class="office-city">🇿🇦 Cape Town, South Africa</div>
+        <div class="office-addr">1 Harbourview Building,<br>V&A Waterfront, Cape Town 8001</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo">En<span>core</span> BPO</div>
+        <p>Excellence, every interaction.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('services')">Services</a>
+        <a onclick="showPage('careers')">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a>Customer Experience</a>
+        <a>Back Office</a>
+        <a>IT Support</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a>Privacy Policy</a>
+        <a>Terms of Service</a>
+        <a>Cookie Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 <span>Encore BPO</span>. All Rights Reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CAREERS PAGE
+════════════════════════════════════════════ -->
+<div class="page" id="page-careers">
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="ph-badge">Join Our Team</div>
+      <h1>Grow Your Career<br>with <em style="color:var(--gold);font-style:italic">Encore BPO</em></h1>
+      <p>Join 5,000+ professionals building meaningful careers at one of the world's most respected BPO companies. We invest in people first.</p>
+    </div>
+  </section>
+
+  <!-- CULTURE -->
+  <section class="culture-section">
+    <div class="section-head">
+      <div class="section-eye">Our Culture</div>
+      <h2>A Workplace That Empowers</h2>
+      <p>We believe great work comes from great people in a great environment.</p>
+    </div>
+    <div class="culture-grid">
+      <div class="culture-card">
+        <div class="icon">🚀</div>
+        <h4>Growth Mindset</h4>
+        <p>Continuous learning programs, certifications, and clear career pathways for every role.</p>
+      </div>
+      <div class="culture-card">
+        <div class="icon">🌈</div>
+        <h4>Diversity & Inclusion</h4>
+        <p>A global team spanning 40+ nationalities. Every voice matters here.</p>
+      </div>
+      <div class="culture-card">
+        <div class="icon">⚖️</div>
+        <h4>Work-Life Balance</h4>
+        <p>Flexible shifts, wellness programs, and mental health support built into our culture.</p>
+      </div>
+      <div class="culture-card">
+        <div class="icon">🏅</div>
+        <h4>Recognition</h4>
+        <p>Monthly awards, performance bonuses, and quarterly celebrations of your achievements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOB LISTINGS -->
+  <section class="jobs-section">
+    <div class="section-head" style="text-align:left;margin-bottom:28px">
+      <div class="section-eye" style="color:var(--teal)">Open Positions</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:800">Current Opportunities</h2>
+    </div>
+    <div class="jobs-filter">
+      <button class="filter-btn active">All Roles</button>
+      <button class="filter-btn">Customer Experience</button>
+      <button class="filter-btn">Operations</button>
+      <button class="filter-btn">Technology</button>
+      <button class="filter-btn">Finance</button>
+      <button class="filter-btn">HR & Training</button>
+    </div>
+    <div class="jobs-grid">
+      <div class="job-card">
+        <div class="job-info">
+          <h4>Senior Customer Experience Associate</h4>
+          <div class="job-tags">
+            <span class="job-tag tag-dept">Customer Experience</span>
+            <span class="job-tag tag-type">Full-Time</span>
+            <span class="job-tag tag-loc">📍 Gurugram</span>
+          </div>
+        </div>
+        <button class="apply-btn" onclick="alert('Redirecting to application form for Senior Customer Experience Associate')">Apply Now</button>
+      </div>
+      <div class="job-card">
+        <div class="job-info">
+          <h4>Operations Team Lead — Back Office</h4>
+          <div class="job-tags">
+            <span class="job-tag tag-dept">Operations</span>
+            <span class="job-tag tag-type">Full-Time</span>
+            <span class="job-tag tag-loc">📍 Manila</span>
+          </div>
+        </div>
+        <button class="apply-btn" onclick="alert('Redirecting to application form for Operations Team Lead')">Apply Now</button>
+      </div>
+      <div class="job-card">
+        <div class="job-info">
+          <h4>RPA / Automation Engineer</h4>
+          <div class="job-tags">
+            <span class="job-tag tag-dept">Technology</span>
+            <span class="job-tag tag-type">Full-Time</span>
+            <span class="job-tag tag-loc">📍 Remote / Hybrid</span>
+          </div>
+        </div>
+        <button class="apply-btn" onclick="alert('Redirecting to application form for RPA Engineer')">Apply Now</button>
+      </div>
+      <div class="job-card">
+        <div class="job-info">
+          <h4>Finance & Accounts Executive</h4>
+          <div class="job-tags">
+            <span class="job-tag tag-dept">Finance</span>
+            <span class="job-tag tag-type">Full-Time</span>
+            <span class="job-tag tag-loc">📍 Gurugram</span>
+          </div>
+        </div>
+        <button class="apply-btn" onclick="alert('Redirecting to application form for Finance Executive')">Apply Now</button>
+      </div>
+      <div class="job-card">
+        <div class="job-info">
+          <h4>L2 IT Help Desk Analyst</h4>
+          <div class="job-tags">
+            <span class="job-tag tag-dept">Technology</span>
+            <span class="job-tag tag-type">Full-Time</span>
+            <span class="job-tag tag-loc">📍 Cape Town</span>
+          </div>
+        </div>
+        <button class="apply-btn" onclick="alert('Redirecting to application form for IT Help Desk Analyst')">Apply Now</button>
+      </div>
+      <div class="job-card">
+        <div class="job-info">
+          <h4>Training & Development Specialist</h4>
+          <div class="job-tags">
+            <span class="job-tag tag-dept">HR & Training</span>
+            <span class="job-tag tag-type">Full-Time</span>
+            <span class="job-tag tag-loc">📍 Dallas</span>
+          </div>
+        </div>
+        <button class="apply-btn" onclick="alert('Redirecting to application form for Training Specialist')">Apply Now</button>
+      </div>
+      <div class="job-card">
+        <div class="job-info">
+          <h4>Quality Analyst — Customer Experience</h4>
+          <div class="job-tags">
+            <span class="job-tag tag-dept">Operations</span>
+            <span class="job-tag tag-type">Full-Time</span>
+            <span class="job-tag tag-loc">📍 Gurugram</span>
+          </div>
+        </div>
+        <button class="apply-btn" onclick="alert('Redirecting to application form for Quality Analyst')">Apply Now</button>
+      </div>
+      <div class="job-card">
+        <div class="job-info">
+          <h4>Business Development Manager</h4>
+          <div class="job-tags">
+            <span class="job-tag tag-dept">Sales</span>
+            <span class="job-tag tag-type">Full-Time</span>
+            <span class="job-tag tag-loc">📍 London</span>
+          </div>
+        </div>
+        <button class="apply-btn" onclick="alert('Redirecting to application form for BDM')">Apply Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits-section">
+    <div class="section-head" style="text-align:center;margin-bottom:0">
+      <div class="section-eye" style="color:var(--teal);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:12px">Employee Benefits</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:800">Why Work at Encore?</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">💊</div>
+        <h4>Health & Wellness</h4>
+        <p>Comprehensive medical, dental, and vision coverage for you and your family, plus wellness allowances.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📚</div>
+        <h4>Learning & Development</h4>
+        <p>Annual learning budget, access to 1,000+ courses, certifications, and leadership programs.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💰</div>
+        <h4>Competitive Compensation</h4>
+        <p>Market-leading salaries, performance bonuses, and annual appraisals tied to your growth.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🏖️</div>
+        <h4>Paid Time Off</h4>
+        <p>Generous annual leave, public holidays, and flexible work-from-home options for eligible roles.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">👶</div>
+        <h4>Parental Leave</h4>
+        <p>Paid maternity and paternity leave with a structured return-to-work program.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🌐</div>
+        <h4>Global Mobility</h4>
+        <p>Opportunities to work across our global delivery centres and experience different cultures.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <h2>Don't See Your Role? We're Always Looking for Talent.</h2>
+    <a class="btn-dark" onclick="showPage('contact')">Send Us Your CV →</a>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo">En<span>core</span> BPO</div>
+        <p>Excellence, every interaction.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('services')">Services</a>
+        <a onclick="showPage('contact')">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Careers</h5>
+        <a>Open Positions</a>
+        <a>Life at Encore</a>
+        <a>Graduate Program</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a>careers@encorebpo.com</a>
+        <a>LinkedIn</a>
+        <a>Glassdoor</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 <span>Encore BPO</span>. All Rights Reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.getElementById('nav-' + id).classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Filter buttons on careers page
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
