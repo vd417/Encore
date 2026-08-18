@@ -1,36 +1,122 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encore Management Services</title>
 <style>
+  :root{
+    --color-background-primary:#f4f6f9;
+    --color-background-secondary:#eef1f6;
+    --color-text-primary:#16202e;
+    --color-text-secondary:#5b6a7d;
+    --color-border-tertiary:#e0e5ed;
+    --border-radius-lg:16px;
+    --border-radius-md:10px;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: var(--font-sans); color: var(--color-text-primary); background: var(--color-background-primary); line-height: 1.7; font-size: 18px; }
+  body {
+    font-family: var(--font-sans); color: var(--color-text-primary);
+    line-height: 1.7; font-size: 18px;
+    /* modern soft gradient + refined dot grid */
+    background-color: #f4f6f9;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(30,64,200,0.07) 1px, transparent 0),
+      linear-gradient(180deg, #f8fafc 0%, #f1f4f8 40%, #eef1f6 100%);
+    background-size: 24px 24px, 100% 100%;
+    background-attachment: fixed;
+  }
   a { text-decoration: none; color: inherit; }
-
   .site-header {
-    background: linear-gradient(135deg, #0f1c2e 0%, #1a2e4a 50%, #1e3a5f 100%);
+    background: linear-gradient(135deg, rgba(15,28,46,0.85) 0%, rgba(26,46,74,0.85) 50%, rgba(30,58,95,0.85) 100%);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
     padding: 0 2rem;
     position: sticky; top: 0; z-index: 100;
-    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid transparent;
+    background-image:
+      linear-gradient(135deg, rgba(15,28,46,0.85) 0%, rgba(26,46,74,0.85) 50%, rgba(30,58,95,0.85) 100%),
+      linear-gradient(90deg, rgba(224,85,85,0.5), rgba(30,64,200,0.5) 50%, rgba(224,85,85,0.5));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: 0 8px 24px -12px rgba(0,0,0,0.5);
   }
   .nav-inner {
     max-width: 1000px; margin: auto;
     display: flex; align-items: center; justify-content: space-between;
-    height: 68px; gap: 1rem; flex-wrap: wrap;
+    height: 72px; gap: 1rem; flex-wrap: wrap;
   }
   .nav-brand { display: flex; align-items: center; gap: 12px; }
-  .nav-logo {
-    width: 40px; height: 40px;
-    background: linear-gradient(135deg, #e03535, #c01c1c);
-    border-radius: 9px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; font-weight: 500; color: #fff; letter-spacing: 0.5px;
-  }
-  .nav-name { font-size: 17px; font-weight: 500; color: #e8f0fb; }
+  .nav-brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .nav-brand-text .nb-name { font-size: 18px; font-weight: 800; letter-spacing: 0.5px; color: #e8f0fb; }
+  .nav-brand-text .nb-name .nb-core { color: #8fa0b8; font-weight: 700; }
+  .nav-brand-text .nb-sub { font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(200,220,245,0.55); margin-top: 2px; }
   .nav-links { display: flex; gap: 1.5rem; }
   .nav-links a { color: rgba(232,240,251,0.75); font-size: 15px; font-weight: 400; transition: color 0.2s; white-space: nowrap; }
   .nav-links a:hover { color: #e05555; }
-
+  /* ---------- CSS-only ENCORE logo ---------- */
+  .logo-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: linear-gradient(160deg, #ffffff 0%, #f2f5fa 100%);
+    border-radius: var(--border-radius-md);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.9) inset,
+      0 10px 20px -8px rgba(0,0,0,0.35),
+      0 2px 6px rgba(0,0,0,0.25);
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .logo-badge.round { border-radius: 50%; }
+  .logo-badge:hover {
+    transform: perspective(600px) rotateY(-8deg) rotateX(4deg) translateY(-2px);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.9) inset,
+      0 16px 28px -8px rgba(0,0,0,0.4),
+      0 4px 10px rgba(0,0,0,0.3);
+  }
+  .encore-logo { position: relative; width: 26px; height: 26px; flex-shrink: 0; }
+  .encore-logo .ring {
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    border: 3px solid transparent;
+  }
+  .encore-logo .ring.gray {
+    border-color: #9aa4b2;
+    transform: translate(-2.5px,-2px);
+  }
+  .encore-logo .ring.blue {
+    border-color: #1e40c8;
+    transform: translate(2.5px,2px);
+  }
+  .encore-logo-full { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+  .encore-logo-full .ring-lg {
+    position: absolute;
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    border: 7px solid transparent;
+  }
+  .encore-logo-full.sm .ring-lg { border-width: 2.5px; }
+  .encore-logo-full .ring-lg.gray {
+    border-top-color: #9aa4b2;
+    border-bottom-color: #9aa4b2;
+    transform: rotate(16deg) translate(-3px,-3px);
+  }
+  .encore-logo-full .ring-lg.blue {
+    border-top-color: #1e40c8;
+    border-bottom-color: #1e40c8;
+    transform: rotate(-10deg) translate(3px,3px);
+  }
+  .encore-logo-full .wordmark {
+    position: relative; z-index: 2;
+    font-weight: 800; letter-spacing: 1px;
+    color: #1e40c8;
+  }
+  .encore-logo-full .wordmark .core { color: #6f7885; }
+  /* ------------------------------------------- */
   .hero {
     background: linear-gradient(160deg, #0f1c2e 0%, #1a2e4a 40%, #1e3a5f 70%, #1a1030 100%);
-    padding: 96px 2rem;
+    padding: 100px 2rem 116px;
     text-align: center;
     position: relative; overflow: hidden;
   }
@@ -40,6 +126,37 @@
     background: radial-gradient(ellipse at 50% 0%, rgba(200,30,30,0.13) 0%, transparent 65%);
     pointer-events: none;
   }
+  .hero-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(2px);
+    pointer-events: none;
+    opacity: 0.55;
+  }
+  .hero-orb.o1 {
+    width: 220px; height: 220px; top: -60px; left: -60px;
+    background: radial-gradient(circle at 35% 35%, rgba(30,64,200,0.55), rgba(30,64,200,0) 70%);
+    animation: floatY 9s ease-in-out infinite;
+  }
+  .hero-orb.o2 {
+    width: 160px; height: 160px; bottom: -40px; right: 6%;
+    background: radial-gradient(circle at 35% 35%, rgba(224,85,85,0.4), rgba(224,85,85,0) 70%);
+    animation: floatY 7s ease-in-out infinite reverse;
+  }
+  .hero-orb.o3 {
+    width: 110px; height: 110px; top: 22%; right: 14%;
+    background: radial-gradient(circle at 35% 35%, rgba(154,164,178,0.4), rgba(154,164,178,0) 70%);
+    animation: floatY 11s ease-in-out infinite;
+  }
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-18px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-orb, .logo-badge, .hero-logo-wrap .logo-badge { animation: none !important; }
+  }
+  .hero-logo-wrap { margin-bottom: 2rem; position: relative; z-index: 1; }
+  .hero-logo-wrap .logo-badge { animation: floatY 6s ease-in-out infinite; }
+  .hero-logo-wrap .wordmark { font-size: 22px; }
   .hero-eyebrow {
     display: inline-block; font-size: 13px; font-weight: 500;
     color: #e05555; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.2rem;
@@ -55,7 +172,7 @@
     padding: 13px 28px;
     background: #c81c1c; color: #fff;
     border-radius: var(--border-radius-md);
-    font-size: 15px; font-weight: 500; transition: background 0.2s; cursor: pointer;
+    font-size: 15px; font-weight: 500; transition: background 0.2s; cursor: pointer; border: none;
   }
   .btn-primary:hover { background: #e03535; }
   .btn-outline {
@@ -68,51 +185,71 @@
     transition: border-color 0.2s, color 0.2s; cursor: pointer;
   }
   .btn-outline:hover { border-color: #e05555; color: #e05555; }
-
   .section { padding: 72px 2rem; max-width: 1000px; margin: auto; }
   .section-label {
     font-size: 13px; font-weight: 500; color: #c81c1c;
     letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.6rem; text-align: center;
   }
   .section h2 { font-size: 30px; font-weight: 500; color: var(--color-text-primary); text-align: center; margin-bottom: 2.5rem; }
-
-  .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+  /* ---------- 3D tilt cards ---------- */
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; perspective: 1200px; }
   .service-card {
-    background: var(--color-background-primary);
+    background: #ffffff;
     border: 0.5px solid var(--color-border-tertiary);
     border-radius: var(--border-radius-lg); padding: 1.5rem;
-    transition: border-color 0.2s;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.2s;
+    transform-style: preserve-3d;
+    will-change: transform;
+    box-shadow: 0 4px 16px -8px rgba(20,30,60,0.08);
   }
-  .service-card:hover { border-color: #c81c1c; }
+  .service-card:hover {
+    border-color: #c81c1c;
+    transform: perspective(900px) rotateX(6deg) rotateY(-6deg) translateY(-6px);
+    box-shadow: 0 30px 50px -20px rgba(20,30,60,0.4), 0 8px 16px -8px rgba(20,30,60,0.25);
+  }
   .service-icon {
     width: 42px; height: 42px; background: #fcebeb;
     border-radius: var(--border-radius-md);
     display: flex; align-items: center; justify-content: center;
     color: #a32d2d; font-size: 20px; margin-bottom: 14px;
+    transform: translateZ(20px);
   }
   .service-card h3 { font-size: 17px; font-weight: 500; margin-bottom: 8px; }
   .service-card p { font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; }
-
-  .divider-band { background: linear-gradient(135deg, #0f1c2e 0%, #1a1030 100%); padding: 64px 2rem; }
+  /* ------------------------------------ */
+  .divider-band { background: linear-gradient(135deg, #0f1c2e 0%, #1a1030 100%); padding: 64px 2rem; position: relative; overflow: hidden; }
+  .divider-band .hero-orb.o1 { width: 200px; height: 200px; top: -60px; right: -50px; left: auto; }
+  .divider-band .hero-orb.o2 { width: 140px; height: 140px; bottom: -50px; left: 8%; right: auto; }
+  .divider-band .section-label, .divider-band h2 { position: relative; z-index: 1; }
+  .connect-grid { position: relative; z-index: 1; }
   .divider-band .section-label { color: #e05555; text-align: center; }
   .divider-band h2 { color: #e8f0fb; text-align: center; font-size: 30px; font-weight: 500; margin-bottom: 2rem; }
-  .connect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; max-width: 1000px; margin: auto; }
+  .connect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; max-width: 1000px; margin: auto; perspective: 1200px; }
   .connect-card {
-    background: rgba(255,255,255,0.05);
-    border: 0.5px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 0.5px solid rgba(255,255,255,0.12);
     border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem;
+    transition: transform 0.35s ease, background 0.2s;
+  }
+  .connect-card:hover {
+    transform: perspective(900px) rotateX(5deg) rotateY(-5deg) translateY(-3px);
+    background: rgba(255,255,255,0.08);
   }
   .connect-card .clabel { font-size: 12px; color: #e05555; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; }
-  .connect-card p { font-size: 15px; color: rgba(232,240,251,0.85); }
+  .connect-card p { font-size: 15px; color: rgba(232,240,251,0.85); line-height: 1.5; }
   .connect-card a { color: #e05555; }
-
   .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
   .info-card {
-    background: var(--color-background-primary);
+    background: #ffffff;
     border: 0.5px solid var(--color-border-tertiary);
     border-radius: var(--border-radius-lg); padding: 1.25rem;
     display: flex; align-items: flex-start; gap: 14px;
+    transition: box-shadow 0.25s, transform 0.25s;
+    box-shadow: 0 4px 16px -8px rgba(20,30,60,0.08);
   }
+  .info-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(20,30,60,0.3); }
   .info-avatar {
     width: 44px; height: 44px; border-radius: 50%;
     background: #fcebeb; display: flex; align-items: center; justify-content: center;
@@ -120,21 +257,21 @@
   }
   .info-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 3px; }
   .info-card p { font-size: 14px; color: var(--color-text-secondary); }
-
   .career-box {
-    background: var(--color-background-primary);
+    background: #ffffff;
     border: 0.5px solid var(--color-border-tertiary);
     border-radius: var(--border-radius-lg); padding: 2.5rem;
     max-width: 640px; margin: auto; text-align: center;
+    box-shadow: 0 8px 30px -12px rgba(20,30,60,0.1);
   }
   .career-box p { font-size: 16px; color: var(--color-text-secondary); margin-bottom: 1.2rem; }
   .career-box a.link { color: #c81c1c; }
-
   .terms-box {
-    background: var(--color-background-secondary);
+    background: #ffffff;
     border: 0.5px solid var(--color-border-tertiary);
     border-radius: var(--border-radius-lg); padding: 2rem;
     max-width: 700px; margin: auto;
+    box-shadow: 0 4px 20px -10px rgba(20,30,60,0.08);
   }
   .terms-item {
     display: flex; gap: 12px; padding: 13px 0;
@@ -143,75 +280,101 @@
   }
   .terms-item:last-child { border-bottom: none; }
   .terms-dot { color: #c81c1c; margin-top: 5px; font-size: 12px; flex-shrink: 0; }
-
   .site-footer {
     background: linear-gradient(135deg, #0a1420 0%, #0f1c2e 100%);
-    text-align: center; padding: 36px 2rem;
+    text-align: center; padding: 40px 2rem 32px;
     border-top: 0.5px solid rgba(255,255,255,0.08);
+    position: relative; overflow: hidden;
   }
-  .footer-brand { font-size: 17px; font-weight: 500; color: #e8f0fb; margin-bottom: 6px; }
-  .footer-sub { font-size: 13px; color: rgba(200,220,245,0.4); }
+  .site-footer::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(30,64,200,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .site-footer > * { position: relative; z-index: 1; }
+  .footer-brand-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; }
+  .footer-brand { font-size: 17px; font-weight: 500; color: #e8f0fb; }
+  .footer-legal { font-size: 13px; color: rgba(200,220,245,0.55); margin-bottom: 4px; }
+  .footer-sub { font-size: 12.5px; color: rgba(200,220,245,0.4); }
   .red-accent { color: #e03535; }
 </style>
-
-<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Encore Management Services website</h2>
-
+</head>
+<body>
 <div style="border-radius: var(--border-radius-lg); overflow: hidden; border: 0.5px solid var(--color-border-tertiary);">
-
   <header class="site-header">
     <div class="nav-inner">
       <div class="nav-brand">
-        <div class="nav-logo">EMS</div>
-        <span class="nav-name">Encore Management</span>
+        <div class="logo-badge round" style="width:50px; height:50px;">
+          <div class="encore-logo" style="width:30px;height:30px;">
+            <div class="ring gray"></div>
+            <div class="ring blue"></div>
+          </div>
+        </div>
+        <div class="nav-brand-text">
+          <span class="nb-name">ENC<span class="nb-core">ORE</span></span>
+          <span class="nb-sub">Management Services</span>
+        </div>
       </div>
       <div class="nav-links">
         <a href="#">Home</a>
         <a href="#">Services</a>
-        <a href="#">Connect</a>
-        <a href="#">Career</a>
-        <a href="#">Terms</a>
+        <a href="#connect">Connect</a>
+        <a href="#career">Career</a>
+        <a href="#terms">Terms</a>
       </div>
     </div>
   </header>
-
   <section class="hero">
+    <div class="hero-orb o1"></div>
+    <div class="hero-orb o2"></div>
+    <div class="hero-orb o3"></div>
+    <div class="hero-logo-wrap">
+      <div class="logo-badge round" style="width:150px; height:150px;">
+        <div class="encore-logo-full" style="width:118px;height:118px;">
+          <div class="ring-lg gray"></div>
+          <div class="ring-lg blue"></div>
+          <span class="wordmark">ENC<span class="core">ORE</span></span>
+        </div>
+      </div>
+    </div>
     <span class="hero-eyebrow">Professional Services</span>
     <h2>Management solutions built on trust and quality</h2>
     <p>Encore Management Services delivers professional support, business assistance, and career-oriented services with dedication.</p>
-    <a href="#" class="btn-primary"><i class="ti ti-mail" aria-hidden="true"></i> Contact us</a>
+    <a href="#connect" class="btn-primary">Contact us</a>
     <a href="#" class="btn-outline">Learn more</a>
   </section>
-
-  <div style="background: var(--color-background-primary);">
+  <div style="background: transparent;">
     <div class="section">
       <p class="section-label">What we offer</p>
       <h2>Our services</h2>
       <div class="cards-grid">
         <div class="service-card">
-          <div class="service-icon"><i class="ti ti-building" aria-hidden="true"></i></div>
+          <div class="service-icon">🏢</div>
           <h3>Business support</h3>
           <p>Professional solutions for companies to improve workflow and coordination.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
+          <div class="service-icon">📊</div>
           <h3>Management consulting</h3>
           <p>Operational management, planning, and efficient service processes.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon"><i class="ti ti-briefcase" aria-hidden="true"></i></div>
+          <div class="service-icon">💼</div>
           <h3>Career assistance</h3>
           <p>Guidance and opportunities for individuals seeking professional growth.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon"><i class="ti ti-users" aria-hidden="true"></i></div>
+          <div class="service-icon">🤝</div>
           <h3>Client services</h3>
           <p>Customer support and coordination for reliable business relationships.</p>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="divider-band">
+  <div class="divider-band" id="connect">
+    <div class="hero-orb o1"></div>
+    <div class="hero-orb o2"></div>
     <p class="section-label">Get in touch</p>
     <h2>Connect with us</h2>
     <div class="connect-grid">
@@ -220,12 +383,16 @@
         <p>Encore Management Services</p>
       </div>
       <div class="connect-card">
-        <div class="clabel">Address</div>
-        <p>Padma Tower 2, Rajendra Place, New Delhi</p>
+        <div class="clabel">Registered Office</div>
+        <p>402, 4th Floor, Padma Tower&#8209;II,<br>Rajendra Place, New Delhi &#8211; 110008</p>
       </div>
       <div class="connect-card">
         <div class="clabel">Email</div>
-        <p><a href="mailto:Encoremnage@gamil.com">Encoremnage@gamil.com</a></p>
+        <p><a href="mailto:encoreservices22@gmail.com">encoreservices22@gmail.com</a></p>
+      </div>
+      <div class="connect-card">
+        <div class="clabel">GSTIN</div>
+        <p>07DOZPS3750H1Z5</p>
       </div>
       <div class="connect-card">
         <div class="clabel">Owners</div>
@@ -233,8 +400,7 @@
       </div>
     </div>
   </div>
-
-  <div style="background: var(--color-background-primary);">
+  <div style="background: transparent;">
     <div class="section">
       <p class="section-label">Our people</p>
       <h2>Board members &amp; team</h2>
@@ -263,20 +429,18 @@
       </div>
     </div>
   </div>
-
-  <div style="background: var(--color-background-secondary); padding: 72px 2rem;">
+  <div style="background: var(--color-background-secondary); padding: 72px 2rem;" id="career">
     <p class="section-label">Join the team</p>
     <h2 style="font-size:30px; font-weight:500; text-align:center; margin-bottom:2rem;">Career opportunities</h2>
     <div class="career-box">
       <p>We are always looking for dedicated and talented people to join our team. Send your resume to get started.</p>
-      <a href="mailto:Encoremnage@gamil.com" class="btn-primary" style="margin-bottom: 1rem;">
-        <i class="ti ti-send" aria-hidden="true"></i> Send your resume
+      <a href="mailto:encoreservices22@gmail.com" class="btn-primary" style="margin-bottom: 1rem;">
+        Send your resume
       </a>
-      <p style="font-size: 14px; margin-top: 1rem;"><a class="link" href="mailto:Encoremnage@gamil.com">Encoremnage@gamil.com</a></p>
+      <p style="font-size: 14px; margin-top: 1rem;"><a class="link" href="mailto:encoreservices22@gmail.com">encoreservices22@gmail.com</a></p>
     </div>
   </div>
-
-  <div style="background: var(--color-background-primary);">
+  <div style="background: transparent;" id="terms">
     <div class="section">
       <p class="section-label">Legal</p>
       <h2>Terms &amp; conditions</h2>
@@ -296,10 +460,19 @@
       </div>
     </div>
   </div>
-
   <footer class="site-footer">
-    <div class="footer-brand">Encore Management <span class="red-accent">Services</span></div>
-    <div class="footer-sub">© 2026 · All rights reserved · Padma Tower 2, Rajendra Place, New Delhi</div>
+    <div class="footer-brand-row">
+      <div class="logo-badge round" style="width:46px; height:46px;">
+        <div class="encore-logo" style="width:28px;height:28px;">
+          <div class="ring gray"></div>
+          <div class="ring blue"></div>
+        </div>
+      </div>
+      <div class="footer-brand">ENC<span style="color:#8fa0b8;">ORE</span> <span class="red-accent">Management Services</span></div>
+    </div>
+    <div class="footer-legal">Regd. Office: 402, 4th Floor, Padma Tower-II, Rajendra Place, New Delhi &#8211; 110008 &nbsp;·&nbsp; GSTIN: 07DOZPS3750H1Z5</div>
+    <div class="footer-sub">© 2026 · All rights reserved</div>
   </footer>
-
 </div>
+</body>
+</html>
