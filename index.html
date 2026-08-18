@@ -6,28 +6,19 @@
 <title>Encore Management Services</title>
 <style>
   :root{
-    --color-background-primary:#f4f6f9;
-    --color-background-secondary:#eef1f6;
+    --color-background-primary:#ffffff;
+    --color-background-secondary:#f6f8fb;
     --color-text-primary:#16202e;
     --color-text-secondary:#5b6a7d;
-    --color-border-tertiary:#e0e5ed;
+    --color-border-tertiary:#e4e8ee;
     --border-radius-lg:16px;
     --border-radius-md:10px;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: var(--font-sans); color: var(--color-text-primary);
-    line-height: 1.7; font-size: 18px;
-    /* modern soft gradient + refined dot grid */
-    background-color: #f4f6f9;
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(30,64,200,0.07) 1px, transparent 0),
-      linear-gradient(180deg, #f8fafc 0%, #f1f4f8 40%, #eef1f6 100%);
-    background-size: 24px 24px, 100% 100%;
-    background-attachment: fixed;
-  }
+  body { font-family: var(--font-sans); color: var(--color-text-primary); background: var(--color-background-primary); line-height: 1.7; font-size: 18px; }
   a { text-decoration: none; color: inherit; }
+
   .site-header {
     background: linear-gradient(135deg, rgba(15,28,46,0.85) 0%, rgba(26,46,74,0.85) 50%, rgba(30,58,95,0.85) 100%);
     backdrop-filter: blur(14px) saturate(140%);
@@ -55,7 +46,9 @@
   .nav-links { display: flex; gap: 1.5rem; }
   .nav-links a { color: rgba(232,240,251,0.75); font-size: 15px; font-weight: 400; transition: color 0.2s; white-space: nowrap; }
   .nav-links a:hover { color: #e05555; }
+
   /* ---------- CSS-only ENCORE logo ---------- */
+  /* White backing plate, with layered shadow for genuine depth, so the mark reads on the navy sections */
   .logo-badge {
     display: inline-flex; align-items: center; justify-content: center;
     background: linear-gradient(160deg, #ffffff 0%, #f2f5fa 100%);
@@ -75,7 +68,9 @@
       0 16px 28px -8px rgba(0,0,0,0.4),
       0 4px 10px rgba(0,0,0,0.3);
   }
+
   .encore-logo { position: relative; width: 26px; height: 26px; flex-shrink: 0; }
+  /* Full, unbroken interlocking rings — used where the mark stands alone with no text crossing it */
   .encore-logo .ring {
     position: absolute; inset: 0;
     border-radius: 50%;
@@ -89,6 +84,7 @@
     border-color: #1e40c8;
     transform: translate(2.5px,2px);
   }
+
   .encore-logo-full { position: relative; display: inline-flex; align-items: center; justify-content: center; }
   .encore-logo-full .ring-lg {
     position: absolute;
@@ -114,6 +110,7 @@
   }
   .encore-logo-full .wordmark .core { color: #6f7885; }
   /* ------------------------------------------- */
+
   .hero {
     background: linear-gradient(160deg, #0f1c2e 0%, #1a2e4a 40%, #1e3a5f 70%, #1a1030 100%);
     padding: 100px 2rem 116px;
@@ -157,6 +154,7 @@
   .hero-logo-wrap { margin-bottom: 2rem; position: relative; z-index: 1; }
   .hero-logo-wrap .logo-badge { animation: floatY 6s ease-in-out infinite; }
   .hero-logo-wrap .wordmark { font-size: 22px; }
+
   .hero-eyebrow {
     display: inline-block; font-size: 13px; font-weight: 500;
     color: #e05555; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.2rem;
@@ -185,22 +183,23 @@
     transition: border-color 0.2s, color 0.2s; cursor: pointer;
   }
   .btn-outline:hover { border-color: #e05555; color: #e05555; }
+
   .section { padding: 72px 2rem; max-width: 1000px; margin: auto; }
   .section-label {
     font-size: 13px; font-weight: 500; color: #c81c1c;
     letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.6rem; text-align: center;
   }
   .section h2 { font-size: 30px; font-weight: 500; color: var(--color-text-primary); text-align: center; margin-bottom: 2.5rem; }
+
   /* ---------- 3D tilt cards ---------- */
   .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; perspective: 1200px; }
   .service-card {
-    background: #ffffff;
+    background: var(--color-background-primary);
     border: 0.5px solid var(--color-border-tertiary);
     border-radius: var(--border-radius-lg); padding: 1.5rem;
     transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.2s;
     transform-style: preserve-3d;
     will-change: transform;
-    box-shadow: 0 4px 16px -8px rgba(20,30,60,0.08);
   }
   .service-card:hover {
     border-color: #c81c1c;
@@ -217,19 +216,14 @@
   .service-card h3 { font-size: 17px; font-weight: 500; margin-bottom: 8px; }
   .service-card p { font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; }
   /* ------------------------------------ */
-  .divider-band { background: linear-gradient(135deg, #0f1c2e 0%, #1a1030 100%); padding: 64px 2rem; position: relative; overflow: hidden; }
-  .divider-band .hero-orb.o1 { width: 200px; height: 200px; top: -60px; right: -50px; left: auto; }
-  .divider-band .hero-orb.o2 { width: 140px; height: 140px; bottom: -50px; left: 8%; right: auto; }
-  .divider-band .section-label, .divider-band h2 { position: relative; z-index: 1; }
-  .connect-grid { position: relative; z-index: 1; }
+
+  .divider-band { background: linear-gradient(135deg, #0f1c2e 0%, #1a1030 100%); padding: 64px 2rem; }
   .divider-band .section-label { color: #e05555; text-align: center; }
   .divider-band h2 { color: #e8f0fb; text-align: center; font-size: 30px; font-weight: 500; margin-bottom: 2rem; }
   .connect-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; max-width: 1000px; margin: auto; perspective: 1200px; }
   .connect-card {
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 0.5px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(255,255,255,0.1);
     border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem;
     transition: transform 0.35s ease, background 0.2s;
   }
@@ -240,14 +234,14 @@
   .connect-card .clabel { font-size: 12px; color: #e05555; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; }
   .connect-card p { font-size: 15px; color: rgba(232,240,251,0.85); line-height: 1.5; }
   .connect-card a { color: #e05555; }
+
   .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
   .info-card {
-    background: #ffffff;
+    background: var(--color-background-primary);
     border: 0.5px solid var(--color-border-tertiary);
     border-radius: var(--border-radius-lg); padding: 1.25rem;
     display: flex; align-items: flex-start; gap: 14px;
     transition: box-shadow 0.25s, transform 0.25s;
-    box-shadow: 0 4px 16px -8px rgba(20,30,60,0.08);
   }
   .info-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(20,30,60,0.3); }
   .info-avatar {
@@ -257,21 +251,21 @@
   }
   .info-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 3px; }
   .info-card p { font-size: 14px; color: var(--color-text-secondary); }
+
   .career-box {
-    background: #ffffff;
+    background: var(--color-background-primary);
     border: 0.5px solid var(--color-border-tertiary);
     border-radius: var(--border-radius-lg); padding: 2.5rem;
     max-width: 640px; margin: auto; text-align: center;
-    box-shadow: 0 8px 30px -12px rgba(20,30,60,0.1);
   }
   .career-box p { font-size: 16px; color: var(--color-text-secondary); margin-bottom: 1.2rem; }
   .career-box a.link { color: #c81c1c; }
+
   .terms-box {
-    background: #ffffff;
+    background: var(--color-background-secondary);
     border: 0.5px solid var(--color-border-tertiary);
     border-radius: var(--border-radius-lg); padding: 2rem;
     max-width: 700px; margin: auto;
-    box-shadow: 0 4px 20px -10px rgba(20,30,60,0.08);
   }
   .terms-item {
     display: flex; gap: 12px; padding: 13px 0;
@@ -280,19 +274,12 @@
   }
   .terms-item:last-child { border-bottom: none; }
   .terms-dot { color: #c81c1c; margin-top: 5px; font-size: 12px; flex-shrink: 0; }
+
   .site-footer {
     background: linear-gradient(135deg, #0a1420 0%, #0f1c2e 100%);
     text-align: center; padding: 40px 2rem 32px;
     border-top: 0.5px solid rgba(255,255,255,0.08);
-    position: relative; overflow: hidden;
   }
-  .site-footer::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(30,64,200,0.12) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .site-footer > * { position: relative; z-index: 1; }
   .footer-brand-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; }
   .footer-brand { font-size: 17px; font-weight: 500; color: #e8f0fb; }
   .footer-legal { font-size: 13px; color: rgba(200,220,245,0.55); margin-bottom: 4px; }
@@ -301,14 +288,17 @@
 </style>
 </head>
 <body>
+
 <div style="border-radius: var(--border-radius-lg); overflow: hidden; border: 0.5px solid var(--color-border-tertiary);">
+
   <header class="site-header">
     <div class="nav-inner">
       <div class="nav-brand">
-        <div class="logo-badge round" style="width:50px; height:50px;">
-          <div class="encore-logo" style="width:30px;height:30px;">
-            <div class="ring gray"></div>
-            <div class="ring blue"></div>
+        <div class="logo-badge round" style="width:52px; height:52px;">
+          <div class="encore-logo-full sm" style="width:40px;height:40px;">
+            <div class="ring-lg gray"></div>
+            <div class="ring-lg blue"></div>
+            <span class="wordmark" style="font-size:7.5px; letter-spacing:0.3px;">ENC<span class="core">ORE</span></span>
           </div>
         </div>
         <div class="nav-brand-text">
@@ -325,6 +315,7 @@
       </div>
     </div>
   </header>
+
   <section class="hero">
     <div class="hero-orb o1"></div>
     <div class="hero-orb o2"></div>
@@ -344,7 +335,8 @@
     <a href="#connect" class="btn-primary">Contact us</a>
     <a href="#" class="btn-outline">Learn more</a>
   </section>
-  <div style="background: transparent;">
+
+  <div style="background: var(--color-background-primary);">
     <div class="section">
       <p class="section-label">What we offer</p>
       <h2>Our services</h2>
@@ -372,9 +364,8 @@
       </div>
     </div>
   </div>
+
   <div class="divider-band" id="connect">
-    <div class="hero-orb o1"></div>
-    <div class="hero-orb o2"></div>
     <p class="section-label">Get in touch</p>
     <h2>Connect with us</h2>
     <div class="connect-grid">
@@ -400,7 +391,8 @@
       </div>
     </div>
   </div>
-  <div style="background: transparent;">
+
+  <div style="background: var(--color-background-primary);">
     <div class="section">
       <p class="section-label">Our people</p>
       <h2>Board members &amp; team</h2>
@@ -429,6 +421,7 @@
       </div>
     </div>
   </div>
+
   <div style="background: var(--color-background-secondary); padding: 72px 2rem;" id="career">
     <p class="section-label">Join the team</p>
     <h2 style="font-size:30px; font-weight:500; text-align:center; margin-bottom:2rem;">Career opportunities</h2>
@@ -440,7 +433,8 @@
       <p style="font-size: 14px; margin-top: 1rem;"><a class="link" href="mailto:encoreservices22@gmail.com">encoreservices22@gmail.com</a></p>
     </div>
   </div>
-  <div style="background: transparent;" id="terms">
+
+  <div style="background: var(--color-background-primary);" id="terms">
     <div class="section">
       <p class="section-label">Legal</p>
       <h2>Terms &amp; conditions</h2>
@@ -460,12 +454,14 @@
       </div>
     </div>
   </div>
+
   <footer class="site-footer">
     <div class="footer-brand-row">
-      <div class="logo-badge round" style="width:46px; height:46px;">
-        <div class="encore-logo" style="width:28px;height:28px;">
-          <div class="ring gray"></div>
-          <div class="ring blue"></div>
+      <div class="logo-badge round" style="width:48px; height:48px;">
+        <div class="encore-logo-full sm" style="width:36px;height:36px;">
+          <div class="ring-lg gray"></div>
+          <div class="ring-lg blue"></div>
+          <span class="wordmark" style="font-size:6.8px; letter-spacing:0.3px;">ENC<span class="core">ORE</span></span>
         </div>
       </div>
       <div class="footer-brand">ENC<span style="color:#8fa0b8;">ORE</span> <span class="red-accent">Management Services</span></div>
@@ -473,6 +469,7 @@
     <div class="footer-legal">Regd. Office: 402, 4th Floor, Padma Tower-II, Rajendra Place, New Delhi &#8211; 110008 &nbsp;·&nbsp; GSTIN: 07DOZPS3750H1Z5</div>
     <div class="footer-sub">© 2026 · All rights reserved</div>
   </footer>
+
 </div>
 </body>
 </html>
